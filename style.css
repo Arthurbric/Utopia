@@ -1,0 +1,207 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #ffffff;
+    --text-secondary: #b3b3b3;
+    --primary: #FF8C00; /* Laranja Escuro */
+    --accent: #FFD700;  /* Amarelo Ouro */
+    --white: #ffffff;
+    --border: #333;
+}
+
+/* Modo Claro */
+body.light-mode {
+    --bg-color: #f4f4f4;
+    --card-bg: #ffffff;
+    --text-color: #121212;
+    --text-secondary: #555555;
+    --border: #ddd;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body { background-color: var(--bg-color); color: var(--text-color); transition: background 0.3s, color 0.3s; }
+
+/* Header */
+header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; background-color: var(--card-bg); border-bottom: 2px solid var(--primary);
+    position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.logo h1 { font-size: 1.5rem; letter-spacing: 2px; }
+.highlight { color: var(--primary); }
+
+.nav-btn {
+    background: transparent; border: 1px solid var(--primary); color: var(--text-color);
+    padding: 8px 15px; border-radius: 20px; cursor: pointer; margin-left: 10px; transition: 0.3s;
+}
+.nav-btn:hover { background: var(--primary); color: #000; }
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1610890716171-6b1c9f2bd405?q=80&w=1000&auto=format&fit=crop');
+    background-size: cover; background-position: center; padding: 60px 20px; text-align: center;
+}
+.hero h2 { color: var(--accent); font-size: 2.5rem; margin-bottom: 10px; }
+
+/* Filters */
+.filters { padding: 20px 5%; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: center; }
+.search-box {
+    background: var(--card-bg); padding: 10px 15px; border-radius: 5px; border: 1px solid var(--border);
+    display: flex; align-items: center; width: 300px;
+}
+.search-box input { background: transparent; border: none; color: var(--text-color); margin-left: 10px; width: 100%; outline: none; }
+
+.filter-btn {
+    padding: 10px 20px; border: none; background: var(--card-bg); color: var(--text-color);
+    cursor: pointer; border-radius: 5px; font-weight: bold; transition: 0.3s;
+}
+.filter-btn.active, .filter-btn:hover { background: var(--primary); color: #000; }
+
+/* Games Grid */
+.games-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px; padding: 20px 5%;
+}
+
+.game-card {
+    background: var(--card-bg); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s;
+    border-top: 3px solid transparent;
+}
+.game-card:hover { transform: translateY(-5px); border-top: 3px solid var(--primary); }
+
+.game-image { width: 100%; height: 180px; object-fit: cover; background-color: #333; }
+
+.game-info { padding: 15px; }
+.game-title { font-size: 1.2rem; color: var(--primary); margin-bottom: 5px; }
+.game-meta { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 10px; }
+.game-desc { font-size: 0.9rem; margin-bottom: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+.tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 15px; }
+.tag { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; background: #333; color: #fff; }
+.tag.facil { background: #4CAF50; }
+.tag.medio { background: #FFC107; color: #000; }
+.tag.dificil { background: #F44336; }
+
+.card-actions { display: flex; justify-content: space-between; align-items: center; }
+.btn-video { color: var(--primary); text-decoration: none; font-size: 0.9rem; }
+.btn-video:hover { text-decoration: underline; }
+.btn-add-fav {
+    background: transparent; border: 1px solid var(--accent); color: var(--accent);
+    padding: 5px 10px; border-radius: 5px; cursor: pointer; transition: 0.3s;
+}
+.btn-add-fav:hover, .btn-add-fav.added { background: var(--accent); color: #000; }
+
+/* Modal */
+.modal {
+    display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center;
+}
+.modal-content {
+    background-color: var(--card-bg); padding: 20px; border-radius: 10px; width: 90%; max-width: 500px;
+    border: 1px solid var(--primary); position: relative;
+}
+.close-modal { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--text-color); }
+#fav-list { list-style: none; margin-top: 15px; max-height: 300px; overflow-y: auto; }
+#fav-list li {
+    padding: 10px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between;
+}
+.btn-remove { color: #ff4444; cursor: pointer; }
+.btn-clear { width: 100%; padding: 10px; background: #333; color: white; border: none; margin-top: 10px; cursor: pointer; }
+
+/* Footer */
+footer { background: #000; padding: 40px 5%; border-top: 2px solid var(--accent); margin-top: 40px; }
+.footer-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
+.footer-info h4 { color: var(--primary); margin-bottom: 15px; }
+.social-link { display: block; color: var(--white); text-decoration: none; margin: 5px 0; }
+.social-link:hover { color: var(--accent); }
+.copyright { text-align: center; margin-top: 30px; font-size: 0.8rem; color: #666; }
+
+
+
+/* Adicione isto ao seu CSS existente */
+
+/* Estilo dos números nos filtros */
+.count-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin-left: 8px;
+}
+
+.filter-btn.active .count-badge {
+    background-color: var(--text-color);
+    color: var(--primary);
+}
+
+/* Texto de "Mostrando X jogos" */
+.results-info {
+    padding: 0 5%;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Resumo dentro do Modal */
+.fav-summary {
+    background: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent);
+    border: 1px dashed var(--border);
+}
+
+/* Ajuste no modo claro para as badges */
+body.light-mode .count-badge {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+body.light-mode .filter-btn.active .count-badge {
+    background-color: #000;
+    color: #fff;
+}
+body.light-mode .fav-summary {
+    background: #eee;
+    color: var(--primary);
+}
+
+/* Estilo para as bolinhas de contagem nos botões */
+.count-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-left: 8px;
+    font-weight: normal;
+}
+
+/* Quando o botão está ativo (laranja), a bolinha muda de cor */
+.filter-btn.active .count-badge {
+    background-color: #000;
+    color: var(--primary);
+}
+
+/* Estilo do texto "A mostrar X jogos" no topo */
+.results-info h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+/* Ajuste para modo claro */
+body.light-mode .count-badge {
+    background-color: rgba(0,0,0,0.1);
+    color: #333;
+}
+body.light-mode .filter-btn.active .count-badge {
+    background-color: #fff;
+    color: #000;
+}
