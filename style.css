@@ -205,3 +205,93 @@ body.light-mode .filter-btn.active .count-badge {
     background-color: #fff;
     color: #000;
 }
+
+/* --- ESTILOS DA SEÇÃO DE FILTROS --- */
+
+.filters {
+    padding: 20px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* Espaço vertical entre os inputs e os botões */
+    margin-bottom: 20px;
+}
+
+/* Container dos inputs (Busca e Jogadores) */
+.inputs-container {
+    display: flex;
+    gap: 15px; /* Espaço entre a busca e o campo de jogadores */
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Estilo base dos boxes de input */
+.search-box, 
+.player-filter-box {
+    background: var(--card-bg); 
+    border: 1px solid var(--border); 
+    border-radius: 5px; 
+    padding: 12px 15px; /* Aumentei o padding interno para ficar melhor no touch */
+    display: flex; 
+    align-items: center;
+    height: 50px; /* Altura fixa para alinhar tudo */
+}
+
+/* Campo de input transparente */
+.player-filter-box input {
+    background: transparent; 
+    border: none; 
+    color: var(--text-color); 
+    width: 100%; 
+    height: 100%; 
+    outline: none;
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+/* Container dos Botões */
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px; /* Espaço entre cada botão */
+    justify-content: center;
+    width: 100%;
+}
+
+.filter-btn {
+    padding: 10px 20px; /* Botões um pouco maiores */
+    /* Mantenha seus outros estilos de cor/borda aqui */
+}
+
+/* --- AJUSTES PARA MOBILE (Telas menores que 600px) --- */
+@media (max-width: 600px) {
+    
+    .filters {
+        gap: 20px; /* Garante separação vertical no mobile */
+        padding: 15px;
+    }
+
+    .inputs-container {
+        flex-direction: column; /* Coloca um input embaixo do outro */
+        gap: 15px;
+    }
+
+    /* Faz os inputs ocuparem a largura total da tela no celular */
+    .search-box, 
+    .player-filter-box {
+        width: 100%; 
+    }
+
+    /* Ajuste nos botões para preencherem melhor o espaço */
+    .filter-buttons {
+        gap: 10px;
+    }
+    
+    .filter-btn {
+        flex: 1 1 auto; /* Permite que os botões cresçam se necessário */
+        text-align: center;
+        font-size: 0.9rem;
+    }
+}
