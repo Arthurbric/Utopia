@@ -295,3 +295,74 @@ body.light-mode .filter-btn.active .count-badge {
         font-size: 0.9rem;
     }
 }
+
+
+/* --- HEADER (CABEÇALHO) --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--primary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    /* Permite que quebre a linha se faltar espaço */
+    flex-wrap: wrap; 
+    gap: 15px; /* Espaço entre a logo e os botões */
+}
+
+/* --- ÁREA DOS BOTÕES (NAV) --- */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* <--- AQUI ESTÁ O SEGREDO: Espaço entre "Modo" e "Favoritos" */
+}
+
+/* Estilo dos Botões do Header */
+.nav-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre o ícone (lua/coração) e o texto */
+    font-size: 0.9rem;
+    white-space: nowrap; /* Impede que o texto quebre dentro do botão */
+}
+
+.nav-btn:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+/* --- AJUSTE ESPECÍFICO PARA CELULAR (Mobile) --- */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column; /* Coloca a logo em cima e botões embaixo */
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .logo {
+        margin-bottom: 5px; /* Um pouco de espaço abaixo da logo */
+        justify-content: center;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center; /* Centraliza os botões na tela */
+        gap: 20px; /* Aumenta um pouco o espaço entre os botões no celular para facilitar o toque */
+    }
+
+    .nav-btn {
+        padding: 10px 20px; /* Botões um pouco maiores para o dedo */
+        font-size: 1rem;
+    }
+}
