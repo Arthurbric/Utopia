@@ -22,44 +22,139 @@ body.light-mode {
 
 body { background-color: var(--bg-color); color: var(--text-color); transition: background 0.3s, color 0.3s; }
 
-/* Header */
+/* HEADER */
 header {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 5%; background-color: var(--card-bg); border-bottom: 2px solid var(--primary);
-    position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--primary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    flex-wrap: wrap; 
+    gap: 15px;
 }
 
 .logo h1 { font-size: 1.5rem; letter-spacing: 2px; }
 .highlight { color: var(--primary); }
 
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .nav-btn {
-    background: transparent; border: 1px solid var(--primary); color: var(--text-color);
-    padding: 8px 15px; border-radius: 20px; cursor: pointer; margin-left: 10px; transition: 0.3s;
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    white-space: nowrap;
 }
 .nav-btn:hover { background: var(--primary); color: #000; }
 
 /* Hero */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1610890716171-6b1c9f2bd405?q=80&w=1000&auto=format&fit=crop');
-    background-size: cover; background-position: center; padding: 60px 20px; text-align: center;
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    text-align: center;
 }
 .hero h2 { color: var(--accent); font-size: 2.5rem; margin-bottom: 10px; }
 
-/* Filters */
-.filters { padding: 20px 5%; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: center; }
-.search-box {
-    background: var(--card-bg); padding: 10px 15px; border-radius: 5px; border: 1px solid var(--border);
-    display: flex; align-items: center; width: 300px;
+/* FILTROS (Com correção Mobile) */
+.filters {
+    padding: 20px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 20px;
 }
-.search-box input { background: transparent; border: none; color: var(--text-color); margin-left: 10px; width: 100%; outline: none; }
+
+.inputs-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.search-box, 
+.player-filter-box {
+    background: var(--card-bg); 
+    border: 1px solid var(--border); 
+    border-radius: 5px; 
+    padding: 12px 15px;
+    display: flex; 
+    align-items: center;
+    height: 50px;
+}
+
+/* CORREÇÃO DO INPUT PARA IPHONE E MODO CLARO */
+.search-box input,
+.player-filter-box input {
+    background: transparent; 
+    border: none; 
+    color: var(--text-color) !important; /* Força a cor correta */
+    -webkit-text-fill-color: var(--text-color) !important; /* Fix para iOS Safari */
+    width: 100%; 
+    height: 100%; 
+    outline: none;
+    margin-left: 5px;
+    font-size: 1rem;
+    opacity: 1; /* Fix para iOS */
+}
+
+/* Estilo dos Botões de Filtro */
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+}
 
 .filter-btn {
-    padding: 10px 20px; border: none; background: var(--card-bg); color: var(--text-color);
-    cursor: pointer; border-radius: 5px; font-weight: bold; transition: 0.3s;
+    padding: 10px 20px;
+    border: none;
+    background: var(--card-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #000; }
 
-/* Games Grid */
+/* Contadores (Badges) */
+.count-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-left: 8px;
+    font-weight: normal;
+}
+.filter-btn.active .count-badge { background-color: #000; color: var(--primary); }
+
+/* Ajustes para Modo Claro nos Filtros */
+body.light-mode .filter-btn.active .count-badge { background-color: #fff; color: #000; }
+body.light-mode .count-badge { background-color: rgba(0,0,0,0.1); color: #333; }
+
+/* GAMES GRID */
 .games-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 25px; padding: 20px 5%;
@@ -94,7 +189,13 @@ header {
 }
 .btn-add-fav:hover, .btn-add-fav.added { background: var(--accent); color: #000; }
 
-/* Modal */
+/* Resultado Info */
+.results-info {
+    padding: 0 5%; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; font-style: italic;
+}
+.results-info h3 { font-size: 1.1rem; font-weight: 400; border-bottom: 1px solid #333; padding-bottom: 10px; color: var(--text-secondary); }
+
+/* MODAL */
 .modal {
     display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%;
     background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center;
@@ -105,13 +206,60 @@ header {
 }
 .close-modal { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--text-color); }
 #fav-list { list-style: none; margin-top: 15px; max-height: 300px; overflow-y: auto; }
-#fav-list li {
-    padding: 10px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between;
-}
+#fav-list li { padding: 10px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
 .btn-remove { color: #ff4444; cursor: pointer; }
 .btn-clear { width: 100%; padding: 10px; background: #333; color: white; border: none; margin-top: 10px; cursor: pointer; }
+.fav-summary {
+    background: #333; padding: 10px; border-radius: 5px; margin-bottom: 10px;
+    text-align: center; font-weight: bold; color: var(--accent); border: 1px dashed var(--border);
+}
+body.light-mode .fav-summary { background: #eee; color: var(--primary); }
 
-/* Footer */
+/* --- BOTÕES FLUTUANTES (WhatsApp & Topo) --- */
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 99;
+}
+
+.float-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    border: none;
+    transition: transform 0.3s;
+    text-decoration: none;
+}
+
+.float-btn:hover { transform: scale(1.1); }
+
+/* Botão WhatsApp */
+.whatsapp-btn {
+    background-color: #25D366;
+    position: fixed; /* Fixo na esquerda */
+    bottom: 20px;
+    left: 20px;
+    right: auto; /* Anula o right do container */
+}
+
+/* Botão Topo (Seta) */
+.top-btn {
+    background-color: var(--primary);
+    display: none; /* Começa invisível */
+}
+
+/* FOOTER */
 footer { background: #000; padding: 40px 5%; border-top: 2px solid var(--accent); margin-top: 40px; }
 .footer-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
 .footer-info h4 { color: var(--primary); margin-bottom: 15px; }
@@ -119,250 +267,16 @@ footer { background: #000; padding: 40px 5%; border-top: 2px solid var(--accent)
 .social-link:hover { color: var(--accent); }
 .copyright { text-align: center; margin-top: 30px; font-size: 0.8rem; color: #666; }
 
-
-
-/* Adicione isto ao seu CSS existente */
-
-/* Estilo dos números nos filtros */
-.count-badge {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    margin-left: 8px;
-}
-
-.filter-btn.active .count-badge {
-    background-color: var(--text-color);
-    color: var(--primary);
-}
-
-/* Texto de "Mostrando X jogos" */
-.results-info {
-    padding: 0 5%;
-    margin-bottom: 10px;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    font-style: italic;
-}
-
-/* Resumo dentro do Modal */
-.fav-summary {
-    background: #333;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-weight: bold;
-    color: var(--accent);
-    border: 1px dashed var(--border);
-}
-
-/* Ajuste no modo claro para as badges */
-body.light-mode .count-badge {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-body.light-mode .filter-btn.active .count-badge {
-    background-color: #000;
-    color: #fff;
-}
-body.light-mode .fav-summary {
-    background: #eee;
-    color: var(--primary);
-}
-
-/* Estilo para as bolinhas de contagem nos botões */
-.count-badge {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    margin-left: 8px;
-    font-weight: normal;
-}
-
-/* Quando o botão está ativo (laranja), a bolinha muda de cor */
-.filter-btn.active .count-badge {
-    background-color: #000;
-    color: var(--primary);
-}
-
-/* Estilo do texto "A mostrar X jogos" no topo */
-.results-info h3 {
-    font-size: 1.1rem;
-    font-weight: 400;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
-    color: var(--text-secondary);
-}
-
-/* Ajuste para modo claro */
-body.light-mode .count-badge {
-    background-color: rgba(0,0,0,0.1);
-    color: #333;
-}
-body.light-mode .filter-btn.active .count-badge {
-    background-color: #fff;
-    color: #000;
-}
-
-/* --- ESTILOS DA SEÇÃO DE FILTROS --- */
-
-.filters {
-    padding: 20px 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px; /* Espaço vertical entre os inputs e os botões */
-    margin-bottom: 20px;
-}
-
-/* Container dos inputs (Busca e Jogadores) */
-.inputs-container {
-    display: flex;
-    gap: 15px; /* Espaço entre a busca e o campo de jogadores */
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    max-width: 800px;
-}
-
-/* Estilo base dos boxes de input */
-.search-box, 
-.player-filter-box {
-    background: var(--card-bg); 
-    border: 1px solid var(--border); 
-    border-radius: 5px; 
-    padding: 12px 15px; /* Aumentei o padding interno para ficar melhor no touch */
-    display: flex; 
-    align-items: center;
-    height: 50px; /* Altura fixa para alinhar tudo */
-}
-
-/* Campo de input transparente */
-.player-filter-box input {
-    background: transparent; 
-    border: none; 
-    color: var(--text-color); 
-    width: 100%; 
-    height: 100%; 
-    outline: none;
-    margin-left: 5px;
-    font-size: 1rem;
-}
-
-/* Container dos Botões */
-.filter-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px; /* Espaço entre cada botão */
-    justify-content: center;
-    width: 100%;
-}
-
-.filter-btn {
-    padding: 10px 20px; /* Botões um pouco maiores */
-    /* Mantenha seus outros estilos de cor/borda aqui */
-}
-
-/* --- AJUSTES PARA MOBILE (Telas menores que 600px) --- */
+/* MEDIA QUERY MOBILE */
 @media (max-width: 600px) {
+    header { flex-direction: column; padding: 15px; gap: 15px; }
+    .logo { margin-bottom: 5px; justify-content: center; }
+    nav { width: 100%; justify-content: center; gap: 20px; }
+    .nav-btn { padding: 10px 20px; font-size: 1rem; }
     
-    .filters {
-        gap: 20px; /* Garante separação vertical no mobile */
-        padding: 15px;
-    }
-
-    .inputs-container {
-        flex-direction: column; /* Coloca um input embaixo do outro */
-        gap: 15px;
-    }
-
-    /* Faz os inputs ocuparem a largura total da tela no celular */
-    .search-box, 
-    .player-filter-box {
-        width: 100%; 
-    }
-
-    /* Ajuste nos botões para preencherem melhor o espaço */
-    .filter-buttons {
-        gap: 10px;
-    }
-    
-    .filter-btn {
-        flex: 1 1 auto; /* Permite que os botões cresçam se necessário */
-        text-align: center;
-        font-size: 0.9rem;
-    }
-}
-
-
-/* --- HEADER (CABEÇALHO) --- */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background-color: var(--card-bg);
-    border-bottom: 2px solid var(--primary);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    /* Permite que quebre a linha se faltar espaço */
-    flex-wrap: wrap; 
-    gap: 15px; /* Espaço entre a logo e os botões */
-}
-
-/* --- ÁREA DOS BOTÕES (NAV) --- */
-nav {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* <--- AQUI ESTÁ O SEGREDO: Espaço entre "Modo" e "Favoritos" */
-}
-
-/* Estilo dos Botões do Header */
-.nav-btn {
-    background: transparent;
-    border: 1px solid var(--primary);
-    color: var(--text-color);
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Espaço entre o ícone (lua/coração) e o texto */
-    font-size: 0.9rem;
-    white-space: nowrap; /* Impede que o texto quebre dentro do botão */
-}
-
-.nav-btn:hover {
-    background: var(--primary);
-    color: #000;
-}
-
-/* --- AJUSTE ESPECÍFICO PARA CELULAR (Mobile) --- */
-@media (max-width: 600px) {
-    header {
-        flex-direction: column; /* Coloca a logo em cima e botões embaixo */
-        padding: 15px;
-        gap: 15px;
-    }
-
-    .logo {
-        margin-bottom: 5px; /* Um pouco de espaço abaixo da logo */
-        justify-content: center;
-    }
-
-    nav {
-        width: 100%;
-        justify-content: center; /* Centraliza os botões na tela */
-        gap: 20px; /* Aumenta um pouco o espaço entre os botões no celular para facilitar o toque */
-    }
-
-    .nav-btn {
-        padding: 10px 20px; /* Botões um pouco maiores para o dedo */
-        font-size: 1rem;
-    }
+    .filters { gap: 20px; padding: 15px; }
+    .inputs-container { flex-direction: column; gap: 15px; }
+    .search-box, .player-filter-box { width: 100%; }
+    .filter-buttons { gap: 10px; }
+    .filter-btn { flex: 1 1 auto; text-align: center; font-size: 0.9rem; }
 }
