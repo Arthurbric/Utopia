@@ -73,7 +73,7 @@ nav {
 }
 .hero h2 { color: var(--accent); font-size: 2.5rem; margin-bottom: 10px; }
 
-/* FILTROS (Com correção Mobile) */
+/* FILTROS */
 .filters {
     padding: 20px 5%;
     display: flex;
@@ -108,17 +108,16 @@ nav {
 .player-filter-box input {
     background: transparent; 
     border: none; 
-    color: var(--text-color) !important; /* Força a cor correta */
-    -webkit-text-fill-color: var(--text-color) !important; /* Fix para iOS Safari */
+    color: var(--text-color) !important;
+    -webkit-text-fill-color: var(--text-color) !important;
     width: 100%; 
     height: 100%; 
     outline: none;
     margin-left: 5px;
     font-size: 1rem;
-    opacity: 1; /* Fix para iOS */
+    opacity: 1;
 }
 
-/* Estilo dos Botões de Filtro */
 .filter-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -139,7 +138,6 @@ nav {
 }
 .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #000; }
 
-/* Contadores (Badges) */
 .count-badge {
     background-color: rgba(255, 255, 255, 0.2);
     padding: 2px 8px;
@@ -150,7 +148,6 @@ nav {
 }
 .filter-btn.active .count-badge { background-color: #000; color: var(--primary); }
 
-/* Ajustes para Modo Claro nos Filtros */
 body.light-mode .filter-btn.active .count-badge { background-color: #fff; color: #000; }
 body.light-mode .count-badge { background-color: rgba(0,0,0,0.1); color: #333; }
 
@@ -189,34 +186,23 @@ body.light-mode .count-badge { background-color: rgba(0,0,0,0.1); color: #333; }
 }
 .btn-add-fav:hover, .btn-add-fav.added { background: var(--accent); color: #000; }
 
-/* Resultado Info */
-.results-info {
-    padding: 0 5%; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; font-style: italic;
-}
+.results-info { padding: 0 5%; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; font-style: italic; }
 .results-info h3 { font-size: 1.1rem; font-weight: 400; border-bottom: 1px solid #333; padding-bottom: 10px; color: var(--text-secondary); }
 
 /* MODAL */
-.modal {
-    display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center;
-}
-.modal-content {
-    background-color: var(--card-bg); padding: 20px; border-radius: 10px; width: 90%; max-width: 500px;
-    border: 1px solid var(--primary); position: relative;
-}
+.modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
+.modal-content { background-color: var(--card-bg); padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; border: 1px solid var(--primary); position: relative; }
 .close-modal { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--text-color); }
 #fav-list { list-style: none; margin-top: 15px; max-height: 300px; overflow-y: auto; }
 #fav-list li { padding: 10px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
 .btn-remove { color: #ff4444; cursor: pointer; }
 .btn-clear { width: 100%; padding: 10px; background: #333; color: white; border: none; margin-top: 10px; cursor: pointer; }
-.fav-summary {
-    background: #333; padding: 10px; border-radius: 5px; margin-bottom: 10px;
-    text-align: center; font-weight: bold; color: var(--accent); border: 1px dashed var(--border);
-}
+.fav-summary { background: #333; padding: 10px; border-radius: 5px; margin-bottom: 10px; text-align: center; font-weight: bold; color: var(--accent); border: 1px dashed var(--border); }
 body.light-mode .fav-summary { background: #eee; color: var(--primary); }
 
-/* --- BOTÕES FLUTUANTES (WhatsApp & Topo) --- */
+/* --- BOTÕES FLUTUANTES (WhatsApp, Topo e Fundo) --- */
 .floating-buttons {
+    /* Container invisível para organizar os botões */
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -224,6 +210,8 @@ body.light-mode .fav-summary { background: #eee; color: var(--primary); }
     flex-direction: column;
     gap: 15px;
     z-index: 99;
+    /* Deixe o width auto para não bloquear cliques */
+    pointer-events: none; 
 }
 
 .float-btn {
@@ -240,23 +228,25 @@ body.light-mode .fav-summary { background: #eee; color: var(--primary); }
     border: none;
     transition: transform 0.3s;
     text-decoration: none;
+    pointer-events: auto; /* Reativa cliques nos botões */
 }
 
 .float-btn:hover { transform: scale(1.1); }
 
-/* Botão WhatsApp */
+/* Botão WhatsApp - Fixo na ESQUERDA */
 .whatsapp-btn {
     background-color: #25D366;
-    position: fixed; /* Fixo na esquerda */
+    position: fixed;
     bottom: 20px;
     left: 20px;
-    right: auto; /* Anula o right do container */
 }
 
-/* Botão Topo (Seta) */
-.top-btn {
+/* Botões de Navegação (Seta) - Fixos na DIREITA */
+.nav-scroll-btn {
     background-color: var(--primary);
-    display: none; /* Começa invisível */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
 
 /* FOOTER */
