@@ -15,12 +15,10 @@
      <style>
           .logo-img {
                height: 60px;
-               /* Tamanho da logo */
                width: auto;
                vertical-align: middle;
                margin-right: 15px;
-               border-radius: 5%;
-               /* border: 2px solid var(--primary); */
+               /* border-radius: 50%; */
           }
 
           .logo {
@@ -92,7 +90,13 @@
      </div>
 
      <main id="games-container" class="games-grid">
-     </main>
+          </main>
+
+     <div id="suggestion-box" style="text-align:center; padding: 40px 20px; display: none;">
+          <h3>Não encontrou o que procurava?</h3>
+          <p>Mande uma mensagem pra gente e sugira um jogo!</p>
+          <a href="https://wa.me/5561999669987?text=Ol%C3%A1%2C%20gostaria%20de%20sugerir%20um%20jogo%20para%20o%20acervo!" target="_blank" class="nav-btn" style="display:inline-block; margin-top:10px; background:var(--primary); color:black; border:none;">Sugerir Jogo</a>
+     </div>
 
      <div id="fav-modal" class="modal">
           <div class="modal-content">
@@ -110,45 +114,49 @@
           </div>
      </div>
 
+     <div class="floating-buttons">
+          <a href="https://wa.me/5561999669987?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Acervo!" target="_blank" class="float-btn whatsapp-btn" title="Fale conosco no WhatsApp">
+               <i class="fab fa-whatsapp"></i>
+          </a>
+          <button id="back-to-top" class="float-btn top-btn" title="Voltar ao topo">
+               <i class="fas fa-arrow-up"></i>
+          </button>
+     </div>
+
      <footer>
           <div class="footer-info">
-
                <div class="info-item">
                     <h4><i class="fas fa-map-marker-alt"></i> Contato</h4>
                     <p class="social-link">CLN 116 Bloco I, 31S - Asa Norte</p>
                     <p class="social-link">Brasília/DF</p>
                     <p class="social-link" style="margin-top: 10px;"><i class="fas fa-phone"></i> (61) 99966-9987</p>
-                    <p class="social-link"<i class="fas fa-envelope"></i> contato@utopiagames.com.br</p>
+                    <p class="social-link"><i class="fas fa-envelope"></i> contato@utopiagames.com.br</p>
                </div>
 
                <div class="info-item">
                     <h4><i class="far fa-clock"></i> Horário de Funcionamento</h4>
                     <p class="social-link"><strong>Terça à Sexta:</strong></p>
                     <p class="social-link">17:00 - 00:00</p>
-                    <br class="social-link">
+                    <br>
                     <p class="social-link"><strong>Sáb, Dom e Feriados:</strong></p>
                     <p class="social-link">14:00 - 22:00</p>
                </div>
 
                <div class="info-item">
                     <h4><i class="fab fa-instagram"></i> Social</h4>
-                    <a href="https://www.instagram.com/utopiagamesbr/#" target="_blank"
-                         class="social-link">@utopiagamesbr</a>
-                    <a href="https://loja.utopiagames.com.br/?view=ecom/home" target="_blank" class="social-link">Site
-                         Oficial</a>
+                    <a href="https://www.instagram.com/utopiagamesbr/#" target="_blank" class="social-link">@utopiagamesbr</a>
+                    <a href="https://loja.utopiagames.com.br/?view=ecom/home" target="_blank" class="social-link">Site Oficial</a>
                </div>
           </div>
 
           <div class="copyright">
                <p>&copy; 2026 Utopia Board Game. Todos os direitos reservados.</p>
                <p style="margin-top: 5px; font-size: 0.8rem;">
-                    Criado por <a href="https://arash.com.br/" target="_blank"
-                         style="color: var(--primary); text-decoration: none;">Arthur Arash</a>
+                    Criado por <a href="https://arash.com.br/" target="_blank" style="color: var(--primary); text-decoration: none;">Arthur Arash</a>
                </p>
           </div>
      </footer>
 
      <script src="script.js"></script>
 </body>
-
 </html>
